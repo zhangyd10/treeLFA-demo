@@ -246,7 +246,7 @@ topics_plot <- function(phi) {
   }
   
   rownames(phi) <- paste("Topic",1:nrow(phi),sep="")
-  colnames(phi) <- paste("Disease",1:ncol(phi),sep="")
+  colnames(phi) <- paste("Disease",ncol(phi):1,sep="")
     
   pheatmap( t(phi),
             cluster_cols=FALSE,
