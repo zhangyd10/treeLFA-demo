@@ -945,7 +945,7 @@ Rcpp::List gibbs( int K, int S, int S1, int D,
 
   for ( int c=1; c<=cycle; c++ ){ 
     
-    std::cout << "EM cycle: " << c << std::endl;
+    std::cout << "Gibbs sampling iteration: " << c << std::endl;
     
     // Gibbs sampler: 
     result_gibbs = gibbs_parallel( K, S, S1, D, 
@@ -987,7 +987,6 @@ Rcpp::List gibbs( int K, int S, int S1, int D,
       j = j + 1;
       
     }
-    
     
     
   }     

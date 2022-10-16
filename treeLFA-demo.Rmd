@@ -68,7 +68,7 @@ ge_result <- gibbs_EM_train( topic.number=4,
                              burn_in=19, 
                              alpha=c(0.1,0.1,0.1,0.1),
                              opt_N_1=1, cycle_1=100, 
-                             opt_N_2=10, cycle_2=10 )
+                             opt_N_2=10, cycle_2=50 )
 ```
 In the result object "ge_result", values of all hidden variables and the hyperparameter alpha in the last cycle of the Gibbs-EM training are stored. The hidden variables include the probability variables of disease codes in topics (Phi), the indicator variables of disease codes in topics (I), the transition probability variables of the Markov process on the tree structure (rho), and the topic assignment variables for all individuals' disease codes (Z). The full likelihood of the treeLFA model in all Gibbs-EM cycle are also recorded, and can be plotted to monitor the convergence. 
 ```{r pressure, echo=TRUE, out.width="40%"}
