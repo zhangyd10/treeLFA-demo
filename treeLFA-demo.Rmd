@@ -34,7 +34,7 @@ Rcpp::sourceCpp("pl_mc.cpp")
 source(file="treeLFA.functions.R")
 ```
 
-There are two inputs for treeLFA: the diagnosis data for individuals, and the tree structure of disease codes. 
+There are two inputs for treeLFA: the diagnosis data for individuals, and the tree structure of disease codes. \n
 The diagnosis data is a bianry matrix in which the presence and absence of disease codes for individuals are recorded. Each row in the input matrix is an individual, and each column is a disease code. The example dataset contains the diagnostic record of 15 disease codes for 5,000 individuals. 
 ```{r, echo=TRUE}
 data <- fread("simu.train.data.txt")    
