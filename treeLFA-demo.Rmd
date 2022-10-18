@@ -38,7 +38,8 @@ source(file="treeLFA.functions.R")
 
 There are two inputs for treeLFA: the diagnosis data for individuals, and the tree structure of disease codes. 
 The diagnosis data is a bianry matrix in which the presence and absence of disease codes for individuals are 
-recorded. Each row in the input matrix is an individual, and each column is a disease code. The example dataset contains the diagnostic record of 15 disease codes for 5,000 individuals. 
+recorded. Each row in the input matrix is an individual, and each column is a disease code. The example dataset
+contains the diagnostic record of 15 disease codes for 5,000 individuals. 
 ```{r, echo=TRUE}
 data <- fread("simu.train.data.txt")    
 print(head(data))
@@ -70,12 +71,16 @@ print(head(tree_str,10))
 
 
 With the input data prepared, the Gibbs-EM algorithm can be used to optimize alpha (The hypeparameter of the 
-Dirichlet prior for topic weights) while doing the inference of other hidden variables. The number of topics to be inferred (argument "topic.number" in the "gibbs_EM_train" function below) needs to be set. The initial alpha (argument "alpha") is set to be (0.1,0.1,0.1,0.1), which was the true alpha used to simulate the data. On real 
+Dirichlet prior for topic weights) while doing the inference of other hidden variables. The number of topics to
+be inferred (argument "topic.number" in the "gibbs_EM_train" function below) needs to be set. The initial alpha
+(argument "alpha") is set to be (0.1,0.1,0.1,0.1), which was the true alpha used to simulate the data. On real 
 world dataset, it is recommended to set alpha to be (1,0.1,...0.1).   
 In addition, the "burn_in" argument denotes the number of Gibbs sampling iterations in each E-step before the 
 collection of samples of hidden variables (used for the optimization of alpha in the M-step). There are two 
 stages of training. For both stages, the total number of EM cycles (arguements "cycle_1" and "cycle_2") and the
-number of hidden variables collected in the E-step can be set (arguement "opt_N_1" and "opt_N_2"). Note that in stage 1, "opt_N_1" is usually set to be 1 to speed up the traniing. In stage 2, "opt_N_2" can be set to a value larger than 1 to achieve more accurate optimization of alpha. The Gibbs-EM training here will take about two 
+number of hidden variables collected in the E-step can be set (arguement "opt_N_1" and "opt_N_2"). Note that in
+stage 1, "opt_N_1" is usually set to be 1 to speed up the traniing. In stage 2, "opt_N_2" can be set to a value
+larger than 1 to achieve more accurate optimization of alpha. The Gibbs-EM training here will take about two 
 minutes. 
 ```{r, echo=TRUE}
 ge_result <- gibbs_EM_train( topic.number=4,
